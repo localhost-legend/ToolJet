@@ -362,13 +362,13 @@ export default class MysqlQueryService implements QueryService {
   let effectiveOptions = { ...sourceOptions };
   if (sourceOptions.connection_type === 'string' && sourceOptions.connection_string) {
     const parsed = this.parseConnectionString(sourceOptions.connection_string);
-      effectiveOptions.host= effectiveOptions.host || parsed.host;
-      effectiveOptions.port= effectiveOptions.port|| parsed.port;
-      effectiveOptions.database=effectiveOptions.database || parsed.database;
-      effectiveOptions.username=effectiveOptions.username || parsed.username;
-      effectiveOptions.password=effectiveOptions.password || parsed.password;
-      if (parsed.socket_path) effectiveOptions.socket_path =effectiveOptions.socket_path ||  parsed.socket_path;
-      if (parsed.ssl_enabled !== undefined) effectiveOptions.ssl_enabled = effectiveOptions.ssl_enabled || parsed.ssl_enabled;
+      effectiveOptions.host= effectiveOptions.host ?? parsed.host;
+      effectiveOptions.port= effectiveOptions.port?? parsed.port;
+      effectiveOptions.database=effectiveOptions.database ?? parsed.database;
+      effectiveOptions.username=effectiveOptions.username ?? parsed.username;
+      effectiveOptions.password=effectiveOptions.password ?? parsed.password;
+      if (parsed.socket_path) effectiveOptions.socket_path =effectiveOptions.socket_path ??  parsed.socket_path;
+      if (parsed.ssl_enabled !== undefined) effectiveOptions.ssl_enabled = effectiveOptions.ssl_enabled ?? parsed.ssl_enabled;
   }
 
   const shouldUseSSL = effectiveOptions.ssl_enabled;

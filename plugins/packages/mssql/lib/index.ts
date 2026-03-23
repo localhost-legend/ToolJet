@@ -295,13 +295,13 @@ private parseConnectionString(connectionString: string): Partial<SourceOptions> 
       
 
        finalOptions = { ...sourceOptions };
-        if (parsedOptions.host) finalOptions.host= finalOptions.host || parsedOptions.host;
-        if (parsedOptions.port) finalOptions.port=finalOptions.port || parsedOptions.port;
-        if (parsedOptions.database) finalOptions.database=finalOptions.database || parsedOptions.database;
-        if (parsedOptions.username) finalOptions.username=finalOptions.username || parsedOptions.username;
-        if (parsedOptions.password) finalOptions.password=finalOptions.password || parsedOptions.password;
-        if (parsedOptions.instanceName) finalOptions.instanceName =finalOptions.instanceName|| parsedOptions.instanceName;
-        if (parsedOptions.azure !== undefined) finalOptions.azure=finalOptions.azure|| parsedOptions.azure;
+        if (parsedOptions.host) finalOptions.host= finalOptions.host ?? parsedOptions.host;
+        if (parsedOptions.port) finalOptions.port=finalOptions.port ?? parsedOptions.port;
+        if (parsedOptions.database) finalOptions.database=finalOptions.database ?? parsedOptions.database;
+        if (parsedOptions.username) finalOptions.username=finalOptions.username ?? parsedOptions.username;
+        if (parsedOptions.password) finalOptions.password=finalOptions.password ?? parsedOptions.password;
+        if (parsedOptions.instanceName) finalOptions.instanceName =finalOptions.instanceName?? parsedOptions.instanceName;
+        if (parsedOptions.azure !== undefined) finalOptions.azure=finalOptions.azure?? parsedOptions.azure;
 
     } else {
       finalOptions = sourceOptions;
